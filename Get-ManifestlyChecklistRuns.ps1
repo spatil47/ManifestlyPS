@@ -12,7 +12,7 @@ Param(
     [ValidateSet("started", "late", "completed")]
         [string] $Status,
     [Parameter()]
-        [integer] $RecordsPerPage,
+        [string] $RecordsPerPage,
     [Parameter()]
         [string] $Page
 )
