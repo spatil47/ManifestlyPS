@@ -54,6 +54,7 @@
 ## Checklist Runs Collection
 
 - List all Checklist Runs
+  - In Progress
 - Create a New Checklist Run
 
 ## Checklist Run
