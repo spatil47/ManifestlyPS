@@ -1,4 +1,6 @@
 Param(
+    [Parameter()]
+        [string] $Server = "https://api.manifest.ly",
     [Parameter(mandatory=$true)]
         [string] $APIKey,
     [Parameter()]
@@ -25,4 +27,4 @@ $config = @{
     page         = $Page
 }
 
-((Invoke-WebRequest -Uri "https://api.manifest.ly/api/v1/runs/" -Body $config -Method Get).Content | ConvertFrom-Json).runs
+((Invoke-WebRequest -Uri "$Server/api/v1/runs/" -Body $config -Method Get).Content | ConvertFrom-Json).runs
