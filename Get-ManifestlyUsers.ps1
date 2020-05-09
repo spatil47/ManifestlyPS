@@ -20,7 +20,7 @@
         One object per user, containing ID, membership ID, full name, role, display name, and username.
 
 .LINK
-    https://manifestlyapi.docs.apiary.io/#reference/0/users-collection/list-all-usersc
+    https://manifestlyapi.docs.apiary.io/#reference/0/users-collection/list-all-users
 #>
 
 #Requires -Version 4.0
