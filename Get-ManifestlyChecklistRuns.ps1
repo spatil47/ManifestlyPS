@@ -17,7 +17,7 @@ Param(
         [string] $Page
 )
 
-$config = @{
+$query = @{
     api_key      = $APIKey
     checklist_id = $ChecklistID
     external_id  = $ExternalID
@@ -27,4 +27,4 @@ $config = @{
     page         = $Page
 }
 
-((Invoke-WebRequest -Uri "$Server/api/v1/runs/" -Body $config -Method Get).Content | ConvertFrom-Json).runs
+((Invoke-WebRequest -Uri "$Server/api/v1/runs/" -Body $query -Method Get).Content | ConvertFrom-Json).runs

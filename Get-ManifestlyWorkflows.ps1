@@ -5,8 +5,8 @@ Param(
         [string] $APIKey
 )
 
-$config = @{
+$query = @{
     api_key = $APIKey
 }
 
-((Invoke-WebRequest -Uri "$Server/api/v1/checklists/" -Body $config -Method Get).Content | ConvertFrom-Json).checklists
+((Invoke-WebRequest -Uri "$Server/api/v1/checklists/" -Body $query -Method Get).Content | ConvertFrom-Json).checklists
