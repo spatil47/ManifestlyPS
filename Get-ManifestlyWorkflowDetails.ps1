@@ -4,7 +4,7 @@ Param(
     [Parameter(mandatory=$true)]
         [string] $APIKey,
     [Parameter(mandatory=$true)]
-        [string] $ChecklistID
+        [string] $WorkflowID
 )
 
 $Query = @{
@@ -12,7 +12,7 @@ $Query = @{
 }
 
 $Request = @{
-    Uri = "$Server/api/v1/checklists/$ChecklistID"
+    Uri = "$Server/api/v1/checklists/$WorkflowID"
     Body = $Query
     Method = "Get"
 }

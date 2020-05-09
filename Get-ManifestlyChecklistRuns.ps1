@@ -4,9 +4,9 @@ Param(
     [Parameter(mandatory=$true)]
         [string] $APIKey,
     [Parameter()]
-        [string] $ChecklistID,
+        [string] $WorkflowID,
     [Parameter()]
-        [string] $ExternalID,
+        [string] $RunExternalID,
     [Parameter()]
         [string] $Title,
     [ValidateSet("started", "late", "completed")]
@@ -19,8 +19,8 @@ Param(
 
 $Query = @{
     api_key      = $APIKey
-    checklist_id = $ChecklistID
-    external_id  = $ExternalID
+    checklist_id = $WorkflowID
+    external_id  = $RunExternalID
     title        = $Title
     status       = $Status
     per_page     = $RecordsPerPage
