@@ -5,7 +5,7 @@ Param(
         [string] $APIKey,
     [Parameter(mandatory=$true)]
         [string] $RunID,
-        [Parameter(mandatory=$true)]
+    [Parameter(mandatory=$true)]
         [string] $RunStepID
 )
 
