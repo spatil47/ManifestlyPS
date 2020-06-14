@@ -12,7 +12,7 @@
 .PARAMETER APIKey
     The Manifestly API key associated with the department of the checklist run details to be retrieved.
 
-.PARAMETER APIKey
+.PARAMETER RunID
     The ID of the checklist run.
 
 .INPUTS
