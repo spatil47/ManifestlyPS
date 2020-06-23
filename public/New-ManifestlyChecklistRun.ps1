@@ -30,7 +30,7 @@ function New-ManifestlyChecklistRun {
     }
 
     $Request = @{
-        Uri    = (.\New-HttpUrl.ps1 -QueryParameters $Query -Server "$Server/api/v1/runs/")
+        Uri    = New-HttpUrl -QueryParameters $Query -Server "$Server/api/v1/runs/"
         Body   = ($body | ConvertTo-Json)
         Method = "Post"
     }
