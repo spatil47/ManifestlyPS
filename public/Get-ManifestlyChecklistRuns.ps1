@@ -44,40 +44,42 @@
     https://manifestlyapi.docs.apiary.io/#reference/0/checklist-runs-collection/list-all-checklist-runs
 #>
 
-#Requires -Version 4.0
-Param(
-    [Parameter()]
+function Get-ManifestlyChecklistRuns {
+    [CmdletBinding()]
+    Param(
+        [Parameter()]
         [string] $Server = "https://api.manifest.ly",
-    [Parameter(mandatory=$true)]
+        [Parameter(mandatory = $true)]
         [string] $APIKey,
-    [Parameter()]
+        [Parameter()]
         [string] $WorkflowID,
-    [Parameter()]
+        [Parameter()]
         [string] $RunExternalID,
-    [Parameter()]
+        [Parameter()]
         [string] $Title,
-    [ValidateSet("started", "late", "completed")]
+        [ValidateSet("started", "late", "completed")]
         [string] $Status,
-    [Parameter()]
+        [Parameter()]
         [string] $RecordsPerPage = 30,
-    [Parameter()]
+        [Parameter()]
         [string] $Page
-)
+    )
 
-$Query = @{
-    api_key      = $APIKey
-    checklist_id = $WorkflowID
-    external_id  = $RunExternalID
-    title        = $Title
-    status       = $Status
-    per_page     = $RecordsPerPage
-    page         = $Page
+    $Query = @{
+        api_key      = $APIKey
+        checklist_id = $WorkflowID
+        external_id  = $RunExternalID
+        title        = $Title
+        status       = $Status
+        per_page     = $RecordsPerPage
+        page         = $Page
+    }
+
+    $Request = @{
+        Uri    = "$Server/api/v1/runs/"
+        Body   = $query
+        Method = "Get"
+    }
+
+    (Invoke-RestMethod @Request).runs
 }
-
-$Request = @{
-    Uri = "$Server/api/v1/runs/"
-    Body = $query
-    Method = "Get"
-}
-
-(Invoke-RestMethod @Request).runs

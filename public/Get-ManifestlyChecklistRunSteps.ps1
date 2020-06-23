@@ -26,24 +26,26 @@
     https://manifestlyapi.docs.apiary.io/#reference/0/checklist-run-steps-collection/list-all-steps-for-a-checklist-run
 #>
 
-#Requires -Version 4.0
-Param(
-    [Parameter()]
+function Get-ManifestlyChecklistRunSteps {
+    [CmdletBinding()]
+    Param(
+        [Parameter()]
         [string] $Server = "https://api.manifest.ly",
-    [Parameter(mandatory=$true)]
+        [Parameter(mandatory = $true)]
         [string] $APIKey,
-    [Parameter(mandatory=$true)]
+        [Parameter(mandatory = $true)]
         [string] $RunID
-)
+    )
 
-$Query = @{
-    api_key = $APIKey
+    $Query = @{
+        api_key = $APIKey
+    }
+
+    $Request = @{
+        Uri    = "$Server/api/v1/runs/$RunID/run_steps"
+        Body   = $query
+        Method = "Get"
+    }
+
+    (Invoke-RestMethod @Request).run_steps
 }
-
-$Request = @{
-    Uri = "$Server/api/v1/runs/$RunID/run_steps"
-    Body = $query
-    Method = "Get"
-}
-
-(Invoke-RestMethod @Request).run_steps

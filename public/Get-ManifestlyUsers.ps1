@@ -23,22 +23,24 @@
     https://manifestlyapi.docs.apiary.io/#reference/0/users-collection/list-all-users
 #>
 
-#Requires -Version 4.0
-Param(
-    [Parameter()]
+function Get-ManifestlyUsers {
+    [CmdletBinding()]
+    Param(
+        [Parameter()]
         [string] $Server = "https://api.manifest.ly",
-    [Parameter(mandatory=$true)]
+        [Parameter(mandatory = $true)]
         [string] $APIKey
-)
+    )
 
-$Query = @{
-    api_key = $APIKey
+    $Query = @{
+        api_key = $APIKey
+    }
+
+    $Request = @{
+        Uri    = "$Server/api/v1/users"
+        Body   = $Query
+        Method = "Get"
+    }
+
+    (Invoke-RestMethod @Request).users
 }
-
-$Request = @{
-    Uri = "$Server/api/v1/users"
-    Body = $Query
-    Method = "Get"
-}
-
-(Invoke-RestMethod @Request).users
