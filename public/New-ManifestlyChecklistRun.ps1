@@ -6,7 +6,7 @@ function New-ManifestlyChecklistRun {
         [Parameter(mandatory = $true)]
         [string] $APIKey,
         [Parameter(mandatory = $true)]
-        [int] $ChecklistID,
+        [int] $WorkflowID,
         [Parameter()]
         [string] $Title,
         [Parameter()]
@@ -22,16 +22,20 @@ function New-ManifestlyChecklistRun {
     }
 
     $Body = @{
-        checklist_id = $ChecklistID
+        checklist_id = $WorkflowID
         title        = $Title
         late_at      = $Deadline
         users        = $AssignedUsers
         origin       = $Origin
     }
 
+    
     $Request = @{
         Uri    = New-HttpUrl -QueryParameters $Query -Server "$Server/api/v1/runs/"
-        Body   = ($body | ConvertTo-Json)
+        Headers = @{
+            'Content-Type' = "application/json"
+        }
+        Body   = ($Body | ConvertTo-Json)
         Method = "Post"
     }
 
